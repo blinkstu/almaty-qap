@@ -3,7 +3,8 @@ version: "2"
 services:
   backend:
     restart: unless-stopped
-    # IMPORTANT
+    depends_on:
+      - db
     image: blinkstu/almaty-qap:latest
     ports:
       - 8000:8000
@@ -12,7 +13,7 @@ services:
       - /data/almaty-qap/media:/app/media
     extra_hosts:
       - "host.docker.internal:host-gateway"
-    command: bash -c "python manage.py migrate && gunicorn -b 0.0.0.0:8000 project.wsgi:application"
+    command: bash -c "python manage.py migrate && gunicorn -b 0.0.0.0:8000 -w 4 project.wsgi:application"
     environment:
       - DATABASE_NAME=almatyqap
       - DATABASE_USER=almatyqap

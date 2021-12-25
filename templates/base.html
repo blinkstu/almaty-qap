@@ -98,7 +98,7 @@
                                 {% get_language_info for LANGUAGE_CODE as lang %}
                                 {% get_available_languages as LANGUAGES %}
                                 {% get_language_info_list for LANGUAGES as languages %}
-                                <button type="button" class="btn btn-close-light btn-sm dropdown-toggle" id="footerSelectLanguage" data-bs-toggle="dropdown" aria-expanded="false" data-bs-dropdown-animation>
+                                <button type="button" class="btn btn-ghost-secondary btn-sm dropdown-toggle" id="footerSelectLanguage" data-bs-toggle="dropdown" aria-expanded="false" data-bs-dropdown-animation>
                                     <span class="d-flex align-items-center"><span  class="upper">{{ lang.name_translated }}</span></span>
                                 </button>
                                 <input name="next" type="hidden" value="{{ redirect_to }}"/>
