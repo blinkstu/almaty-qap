@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+    <div class="container content-space-t-1 content-space-t-md-2 content-space-b-2 content-space-b-lg-3">
+        <div class="row">
+            <div class="col-lg-3">
+                <!-- Navbar -->
+                <div class="navbar-expand-lg mb-5">
+                    <!-- Navbar Toggle -->
+                    <div class="d-grid">
+                        <button type="button" class="navbar-toggler btn btn-white mb-3" data-bs-toggle="collapse" data-bs-target="#navbarVerticalNavMenu" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navbarVerticalNavMenu">
+                <span class="d-flex justify-content-between align-items-center">
+                  <span class="text-dark">Filter</span>
+
+                  <span class="navbar-toggler-default">
+                    <i class="bi-list"></i>
+                  </span>
+
+                  <span class="navbar-toggler-toggled">
+                    <i class="bi-x"></i>
+                  </span>
+                </span>
+                        </button>
+                    </div>
+                    <!-- End Navbar Toggle -->
+
+                    <!-- Navbar Collapse -->
+                    <div id="navbarVerticalNavMenu" class="collapse navbar-collapse">
+                        <div class="w-100">
+                            <!-- Form -->
+                            <form>
+
+                                <div class="border-bottom pb-4 mb-4">
+                                    <h5>{% translate 'Категории' %}</h5>
+                                    <div class="d-grid gap-2">
+                                        <div class="form-check">
+                                            <a class="form-check-label d-flex" href="{% url 'all_products' %}">
+                                                {% translate 'Все продукты' %}
+                                            </a>
+                                        </div>
+                                    </div>
+                                    {% for instance in categories %}
+                                        <div class="d-grid gap-2">
+                                            <!-- Checkboxes -->
+                                            <div class="form-check">
+                                                <a class="form-check-label d-flex" href="{% url 'all_products_category' category_id=instance.id %}">{{ instance.name }} <span class="ms-auto">({{ instance.product_set.all.count }})</span></a>
+                                            </div>
+                                            <!-- End Checkboxes -->
+                                        </div>
+                                    {% endfor %}
+                                </div>
+
+                            </form>
+                            <!-- End Form -->
+                        </div>
+                    </div>
+                    <!-- End Navbar Collapse -->
+                </div>
+                <!-- End Navbar -->
+            </div>
+            <!-- End Col -->
+
+            <div class="col-lg-9">
+                <div class="row align-items-center mb-5">
+                    <div class="col-sm mb-3 mb-sm-0">
+                        <h6 class="mb-0">{{ total }} {% translate 'Продукты' %}</h6>
+                    </div>
+
+                    <div class="col-sm-auto">
+                        <div class="d-sm-flex justify-content-sm-end align-items-center">
+
+                        </div>
+                    </div>
+                </div>
+                <!-- End Row -->
+
+                <div class="row row-cols-sm-2 row-cols-md-3 mb-10">
+                    {% for instance in page_obj %}
+                    <div class="col mb-4">
+                        <!-- Card -->
+                        <div class="card card-bordered shadow-none text-center h-100">
+                            <div class="card-pinned product-card">
+                                <img class="card-img-top" src="{{ instance.images.all.0.url }}" alt="Image Description">
+                                {% if instance.new %}
+                                    <div class="card-pinned-top-start">
+                                        <span class="badge bg-success rounded-pill">{% translate 'Новый' %}</span>
+                                    </div>
+                                {% endif %}
+
+                            </div>
+
+                            <div class="card-body">
+                                <a class="text-body link" href="{% url 'product_detail' product_id=instance.id %}">{% locale instance.name instance.name_kk %}</a>
+                                <div class="mb-1">
+                                    <small><a class="link-sm link-secondary" href="#">{% locale instance.category.name instance.category.name_kk %}</a></small>
+                                </div>
+                                <p class="card-text text-dark">{{ instance.price }} тг</p>
+                            </div>
+
+                            <div class="card-footer pt-0">
+                                <a type="button" href="{% url 'product_detail' product_id=instance.id %}" class="btn btn-outline-primary btn-sm rounded-pill">{% translate 'подробнее' %}</a>
+                            </div>
+                        </div>
+                        <!-- End Card -->
+                    </div>
+                    {% endfor %}
+                </div>
+                <!-- End Row -->
+
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        {% if page_obj.has_previous %}
+                            <!-- If it ain't a search result display, don't append the search query
+                                 to the URL. -->
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                                  <span aria-hidden="true">
+                                    <i class="bi-chevron-double-left small"></i>
+                                  </span>
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true"><i class="bi-chevron-double-left small"></i></span></a>
+                            </li>
+                        {% endif %}
+                        {% for object in page_obj.paginator.page_range %}
+                            {% if page_obj.number == forloop.counter %}
+                                <li class="page-item active">
+                                    <a class="page-link " href="?page={{ forloop.counter }}">{{ forloop.counter }}</a>
+                                </li>
+                            {% else %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                                  <span aria-hidden="true">
+                                    <i class="bi-chevron-double-right small"></i>
+                                  </span>
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" aria-label="Next"><span aria-hidden="true"><i class="bi-chevron-double-right small"></i></span></a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+            <!-- End Col -->
+        </div>
+        <!-- End Row -->
+    </div>
+{% endblock %}

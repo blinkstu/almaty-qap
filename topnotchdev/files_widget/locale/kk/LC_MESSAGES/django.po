@@ -1,0 +1,64 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-25 19:44+0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: .\django-files-widget\topnotchdev\files_widget\fields.py:39
+msgid "File"
+msgstr ""
+
+#: .\django-files-widget\topnotchdev\files_widget\fields.py:62
+msgid "Files"
+msgstr ""
+
+#: .\django-files-widget\topnotchdev\files_widget\fields.py:80
+msgid "Image"
+msgstr ""
+
+#: .\django-files-widget\topnotchdev\files_widget\fields.py:89
+msgid "Images"
+msgstr ""
+
+#: .\django-files-widget\topnotchdev\files_widget\templates\files_widget\files_widget.html:3
+msgid "undo"
+msgstr ""
+
+#: .\django-files-widget\topnotchdev\files_widget\templates\files_widget\files_widget.html:6
+msgid "Drop multiple images here to upload"
+msgstr ""
+
+#: .\django-files-widget\topnotchdev\files_widget\templates\files_widget\files_widget.html:8
+msgid "Drop an image here to upload"
+msgstr ""
+
+#: .\django-files-widget\topnotchdev\files_widget\templates\files_widget\files_widget.html:17
+msgid "Upload"
+msgstr ""
+
+#: .\django-files-widget\topnotchdev\files_widget\templates\files_widget\files_widget.html:22
+msgid "Library"
+msgstr ""
+
+#: .\django-files-widget\topnotchdev\files_widget\templates\files_widget\files_widget.html:26
+#: .\django-files-widget\topnotchdev\files_widget\templates\files_widget\files_widget.html:28
+msgid "Add by url..."
+msgstr ""
+
+#: .\django-files-widget\topnotchdev\files_widget\templates\files_widget\files_widget.html:45
+msgid "Images to be removed"
+msgstr ""

@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load lang %}
+{% get_language_info for LANGUAGE_CODE as lang %}
+{% block content %}
+    <div class="pattren-1">
+
+    </div>
+    <div class="container content-space-t-1 content-space-t-sm-2">
+        <div class="row">
+            <div class="col-md-7 mb-7 mb-md-0">
+                <div class="pe-md-4">
+                    <div class="card-pinned">
+                        <div class="js-swiper-shop-product swiper swiper-fade swiper-horizontal swiper-pointer-events">
+                            <div class="swiper-wrapper">
+                                {% for item in product.images.all %}
+                                    <div class="swiper-slide">
+                                        <div class="card card-bordered shadow-none">
+                                            <img class="card-img" src="{{ item.url }}" alt="Image Description">
+                                            <div class="shadow-img"></div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="swiper-pagination"></div>
+
+                            <!-- Arrows -->
+                            <div class="js-swiper-shop-product-button-next swiper-button-next" tabindex="0" role="button" aria-label="Next slide"></div>
+                            <div class="js-swiper-shop-product-button-prev swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Col -->
+
+
+            <div class="col-md-5">
+                <!-- Heading -->
+                <div class="mb-5">
+                    <h1 class="h2">{% locale product.name product.name_kk %}</h1>
+                </div>
+                <!-- End Heading -->
+
+                <!-- Price -->
+                <div class="mb-5">
+                    <span class="d-block mb-2">{% translate 'Цына' %}:</span>
+                    <div class="d-flex align-items-center">
+                        <h3 class="mb-0">{{ product.price }} тг</h3>
+                        <span class="ms-2"><del>{% widthratio product.price 0.8 1 %} тг</del></span>
+                    </div>
+                </div>
+                <!-- End Price -->
+
+                <!-- Accordion -->
+                <div class="accordion mb-5" id="shopCartAccordion">
+
+                    <!-- Media -->
+                    <div class="d-flex align-items-center">
+                        <div class="flex-shrink-0">
+                            <div class="svg-icon svg-icon-sm text-primary">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M22.1671 18.1421C22.4827 18.4577 23.0222 18.2331 23.0206 17.7868L23.0039 13.1053V5.52632C23.0039 4.13107 21.8729 3 20.4776 3H8.68815C7.2929 3 6.16183 4.13107 6.16183 5.52632V9H13C14.6568 9 16 10.3431 16 12V15.6316H19.6565L22.1671 18.1421Z"
+                                          fill="#035A4B"></path>
+                                    <path opacity="0.3" fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M1.98508 18V13C1.98508 11.8954 2.88051 11 3.98508 11H11.9851C13.0896 11 13.9851 11.8954 13.9851 13V18C13.9851 19.1046 13.0896 20 11.9851 20H4.10081L2.85695 21.1905C2.53895 21.4949 2.01123 21.2695 2.01123 20.8293V18.3243C1.99402 18.2187 1.98508 18.1104 1.98508 18ZM5.99999 14.5C5.99999 14.2239 6.22385 14 6.49999 14H11.5C11.7761 14 12 14.2239 12 14.5C12 14.7761 11.7761 15 11.5 15H6.49999C6.22385 15 5.99999 14.7761 5.99999 14.5ZM9.49999 16C9.22385 16 8.99999 16.2239 8.99999 16.5C8.99999 16.7761 9.22385 17 9.49999 17H11.5C11.7761 17 12 16.7761 12 16.5C12 16.2239 11.7761 16 11.5 16H9.49999Z"
+                                          fill="#035A4B"></path>
+                                </svg>
+
+                            </div>
+                        </div>
+                        <div class="flex-grow-1 ms-2">
+                            <span class="small me-1">{% translate 'Вам интересно?' %}</span>
+                            <a class="link small" href="https://wa.me/{{ config.tel_number }}" target="_blank">напишите нам</a>
+                        </div>
+                    </div>
+                    <!-- End Media -->
+                </div>
+                <!-- End Col -->
+            </div>
+            <!-- End Row -->
+        </div>
+    </div>
+    <hr>
+
+    <div class="container content-space-2">
+        {% locale product.content product.content_kk %}
+    </div>
+
+    <div class="container content-space-2 content-space-lg-3">
+        <!-- Title -->
+        <div class="w-md-75 w-lg-50 text-center mx-md-auto mb-5 mb-md-9">
+            <h2>Вас может заинтересовать </h2>
+        </div>
+        <!-- End Title -->
+
+        <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+            {% for instance in products %}
+                <div class="col mb-4">
+                    <!-- Card -->
+                    <div class="card card-bordered shadow-none text-center h-100">
+                        <div class="card-pinned product-card">
+                            <img class="card-img-top" src="{{ instance.images.all.0.url }}" alt="Image Description">
+                            {% if instance.new %}
+                                <div class="card-pinned-top-start">
+                                    <span class="badge bg-success rounded-pill">{% translate 'Новый' %}</span>
+                                </div>
+                            {% endif %}
+
+                        </div>
+
+                        <div class="card-body">
+                            <a class="text-body link" href="{% url 'product_detail' product_id=instance.id %}">{% locale instance.name instance.name_kk %}</a>
+                            <div class="mb-1">
+                                <small><a class="link-sm link-secondary" href="#">{% locale instance.category.name instance.category.name_kk %}</a></small>
+                            </div>
+                            <p class="card-text text-dark">{{ instance.price }} тг</p>
+                        </div>
+
+                        <div class="card-footer pt-0">
+                            <a type="button" href="{% url 'product_detail' product_id=instance.id %}" class="btn btn-outline-primary btn-sm rounded-pill">{% translate 'подробнее' %}</a>
+                        </div>
+                    </div>
+                    <!-- End Card -->
+                </div>
+            {% endfor %}
+        </div>
+        <!-- End Row -->
+    </div>
+
+    <script>
+
+        var swiper = new Swiper('.js-swiper-shop-product', {
+            autoplay: true,
+            loop: true,
+            navigation: {
+                nextEl: '.js-swiper-shop-product-button-next',
+                prevEl: '.js-swiper-shop-product-button-prev',
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                dynamicBullets: true,
+            },
+        });
+
+
+    </script>
+{% endblock %}

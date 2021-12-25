@@ -1,0 +1,40 @@
+version: "2"
+
+services:
+  backend:
+    restart: unless-stopped
+    # IMPORTANT
+    image: blinkstu/almaty-qap:latest
+    ports:
+      - 8000:8000
+    volumes:
+      - /data/almaty-qap/static:/app/static
+      - /data/almaty-qap/media:/app/media
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    command: bash -c "python manage.py migrate && gunicorn -b 0.0.0.0:8000 project.wsgi:application"
+    environment:
+      - DATABASE_NAME=almatyqap
+      - DATABASE_USER=almatyqap
+      - DATABASE_PASSWORD=o9H3j6Z5i85DP85
+      - DATABASE_PORT=3306
+      - DATABASE_HOST=host.docker.internal
+      - DEBUG=False
+  db:
+    image: mysql:5.7
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - 3306:3306
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=o9H3j6Z5i85DP85
+      - MYSQL_DATABASE=almatyqap
+      - MYSQL_USER=almatyqap
+      - MYSQL_PASSWORD=o9H3j6Z5i85DP85
+      - MYSQL_ROOT_HOST=%
+    command: [ 'mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci' ]
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+volumes:
+  mysql-data:

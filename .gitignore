@@ -1,0 +1,7 @@
+env
+static
+media
+*.log
+*.pot
+*.pyc
+__pycache__

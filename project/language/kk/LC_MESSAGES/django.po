@@ -1,0 +1,75 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-25 19:44+0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: .\templates\business\all_products.html:34
+msgid "Категории"
+msgstr ""
+
+#: .\templates\business\all_products.html:38
+msgid "Все продукты"
+msgstr ""
+
+#: .\templates\business\all_products.html:66
+msgid "Продукты"
+msgstr ""
+
+#: .\templates\business\all_products.html:86 .\templates\business\index.html:53
+#: .\templates\business\product_detail.html:102
+msgid "Новый"
+msgstr ""
+
+#: .\templates\business\all_products.html:101
+#: .\templates\business\index.html:22 .\templates\business\index.html:23
+#: .\templates\business\index.html:68
+#: .\templates\business\product_detail.html:117
+msgid "подробнее"
+msgstr ""
+
+#: .\templates\business\index.html:11
+msgid "КТО МЫ?"
+msgstr ""
+
+#: .\templates\business\index.html:12
+msgid "ТОО «Алматы Қап»"
+msgstr ""
+
+#: .\templates\business\index.html:79
+msgid "Посмотреть все товары"
+msgstr ""
+
+#: .\templates\business\index.html:90
+msgid "Каталог"
+msgstr ""
+
+#: .\templates\business\index.html:106
+msgid "Посмотреть все"
+msgstr ""
+
+#: .\templates\business\index.html:128
+msgid "превосходное качество"
+msgstr ""
+
+#: .\templates\business\product_detail.html:42
+msgid "Цына"
+msgstr ""
+
+#: .\templates\business\product_detail.html:69
+msgid "Вам интересно?"
+msgstr ""
