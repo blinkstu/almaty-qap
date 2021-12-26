@@ -28,11 +28,11 @@ services:
       - 3306:3306
     restart: unless-stopped
     environment:
-      - MYSQL_ROOT_PASSWORD=o9H3j6Z5i85DP85
-      - MYSQL_DATABASE=almatyqap
-      - MYSQL_USER=almatyqap
-      - MYSQL_PASSWORD=o9H3j6Z5i85DP85
-      - MYSQL_ROOT_HOST=%
+      MYSQL_ROOT_PASSWORD: 'o9H3j6Z5i85DP85'
+      MYSQL_DATABASE: 'almatyqap'
+      MYSQL_USER: 'almatyqap'
+      MYSQL_PASSWORD: 'o9H3j6Z5i85DP85'
+      MYSQL_ROOT_HOST: '%'
     command: [ 'mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci' ]
     extra_hosts:
       - "host.docker.internal:host-gateway"
