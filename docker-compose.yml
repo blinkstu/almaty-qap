@@ -12,15 +12,15 @@ services:
     volumes:
       - /data/almaty-qap/static:/app/static
       - /data/almaty-qap/media:/app/media
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+    links:
+      - db
     command: bash -c "python manage.py migrate && gunicorn -b 0.0.0.0:8000 -w 4 project.wsgi:application"
     environment:
       - DATABASE_NAME=almatyqap
       - DATABASE_USER=almatyqap
       - DATABASE_PASSWORD=o9H3j6Z5i85DP85
       - DATABASE_PORT=3306
-      - DATABASE_HOST=host.docker.internal
+      - DATABASE_HOST=db
       - DEBUG=False
   db:
     image: mysql:5.7
