@@ -3,7 +3,6 @@ version: "2"
 services:
   backend:
     restart: unless-stopped
-    stdin_open: true
     tty: true
     depends_on:
       - db
