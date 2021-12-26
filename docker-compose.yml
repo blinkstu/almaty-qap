@@ -10,7 +10,6 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - /data/almaty-qap/static:/app/static
       - /data/almaty-qap/media:/app/media
     links:
       - db
